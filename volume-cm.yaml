@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: volume-cm-pod
+spec:
+  containers:
+    - name: cont-volume-cm-pod
+      image: busybox
+
+      command:
+        - "sh"
+        - "-c"
+        - "cat /config/name /config/course && sleep 3600"
+      volumeMounts:
+        - mountPath: /config
+          name: my-vol-cm
+  volumes:
+    - name: my-vol-cm
+      configMap:
+        name: my-config

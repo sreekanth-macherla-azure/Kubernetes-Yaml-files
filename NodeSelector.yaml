@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Node Selector
+  labels:
+    app: NS
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: NS-POD
+  template:
+    metadata:
+      name: My-pod
+      labels:
+        app: NS-POD
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          imagePullPolicy: IfNotPresent
+      nodeSelector:
+       OS-IMAGE : Container-Optimized OS from Google
+
+      

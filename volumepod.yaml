@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-pod
+  labels:
+    app: volume-pod
+spec:
+  restartPolicy: Never
+  containers:
+    - name: busybox
+      image: busybox
+      imagePullPolicy: IfNotPresent
+      command: ['sh', '-c', 'while true; do echo sreekanth!!! >> /outputvol/output.txt; sleep 5; done']
+
+      volumeMounts:
+        - mountPath: /outputvol
+          name: my-volume
+  volumes:
+    - name: my-volume
+      persistentVolumeClaim:
+        claimName: pvc-claim1
+  

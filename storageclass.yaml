@@ -1,0 +1,13 @@
+#faster
+apiVersion: storage.k8s.io/v1
+Kind: StorageClass
+
+metadata:
+  name: faster
+provisioner: kubernetes.io/gce-pd
+allowVolumeExpansion: true #This is used to disk expansion
+parameters:
+  type: pd-ssd
+
+
+  

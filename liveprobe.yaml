@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveliness-pod
+  labels:
+    app: liveliness-pod
+spec:
+  containers:
+    - name: liveliness-pod
+      image: busybox
+      command:
+        - "sh"
+        - "-c"
+        - "echo Liveness Probe && sleep 3600"
+      livenessProbe:
+        exec:
+          command: ["echo", "hello world!!!"]
+        periodSeconds: 5
+        initialDelaySeconds: 5
+
+
+  

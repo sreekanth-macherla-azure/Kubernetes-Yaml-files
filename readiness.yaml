@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: readinesspod
+  labels:
+    app: readinesspod
+spec:
+  containers:
+    - name: readinesspod
+      image: nginx
+      readinessProbe:
+        httpGet:
+          port: 80
+          path: /
+        initialDelaySeconds: 5
+        periodSeconds: 5
+  

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: NodeName-pod
+ spec:
+  nodeName:
+  containers:
+    - name: nginx
+      image: nginx
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+  

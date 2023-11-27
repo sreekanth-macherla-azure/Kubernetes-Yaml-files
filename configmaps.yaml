@@ -1,0 +1,19 @@
+# Passing ConfigMaps via ENV where while PODS regenerate only it will pick the env data
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-pod
+spec:
+  restartPolicy: Never
+  containers:
+    - image: busybox
+      name: busybox
+      command: ["sh", "-c", "echo ConfigMap is:$CONFIGMAPVAR && sleep 3600"]
+      env:
+        - name: CONFIGMAPVAR #myvariableclear
+          valueFrom:
+            configMapKeyRef: # iam refering only a key in cm
+              name: my-config # name of the configmap
+              key: name  # key of the data in the configmap
+
+   

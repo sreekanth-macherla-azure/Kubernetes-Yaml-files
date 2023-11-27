@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: onfailure-pod
+  labels:
+    app: onfailure-pod
+spec:
+  restartPolicy: OnFailure
+  containers:
+    - name: onfailure-cont
+      image: nginx
+      imagePullPolicy: IfNotPresent
+      command:
+        - "sh"
+        - "-c"
+        - "echo restart policy!! && sleep 10"
+
+
+  
